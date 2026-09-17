@@ -1,0 +1,3 @@
+document.querySelectorAll('a[href^="#"]').forEach(link=>{link.addEventListener('click',e=>{const target=document.querySelector(link.getAttribute('href'));if(target){e.preventDefault();target.scrollIntoView({behavior:'smooth'});}});});
+
+const sections=document.querySelectorAll('main section[id]');const links=[...document.querySelectorAll('.nav-links a')];const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){links.forEach(a=>a.style.color='');const active=document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);if(active)active.style.color='#42d3ff';}});},{rootMargin:'-35% 0px -55% 0px'});sections.forEach(section=>observer.observe(section));
